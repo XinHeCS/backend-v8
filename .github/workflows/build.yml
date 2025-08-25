@@ -60,11 +60,11 @@ on:
         type: boolean
         default: true
         required: false
-      build_linux:
-        description: 'Build for Linux platform'
-        type: boolean
-        default: true
-        required: false
+      # build_linux:
+      #   description: 'Build for Linux platform'
+      #   type: boolean
+      #   default: true
+      #   required: false
   
 
 jobs:
