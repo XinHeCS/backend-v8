@@ -101,6 +101,6 @@ if [ "$NEW_WRAP" == "with_new_wrap" ]; then
 fi
 # cp out.gn/arm64.release/obj/libv8.a output/v8/Lib/Android/arm64-v8a-so/
 cp -r out.gn/arm64.release/* output/v8/Lib/Android/arm64-v8a-so/
-mkdir -p output/v8/Bin/Android/arm64-v8a
-find out.gn/ -type f -name v8cc -exec cp "{}" output/v8/Bin/Android/arm64-v8a \;
-find out.gn/ -type f -name mksnapshot -exec cp "{}" output/v8/Bin/Android/arm64-v8a \;
+mkdir -p output/v8/Bin/Android/arm64-v8a-so
+find out.gn/ -type f -name v8cc -exec cp "{}" output/v8/Bin/Android/arm64-v8a-so \;
+find out.gn/ -type f -name mksnapshot -exec cp "{}" output/v8/Bin/Android/arm64-v8a-so \;
