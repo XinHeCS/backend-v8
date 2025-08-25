@@ -25,6 +25,11 @@ on:
         - ""
         default: ""
         required: false
+      build_android_so:
+        description: 'Build so for Android platform'
+        type: boolean
+        default: true
+        required: false
       build_android:
         description: 'Build for Android platform'
         type: boolean
@@ -63,6 +68,23 @@ on:
   
 
 jobs:
+  build_android_arm_v8_so:
+    if: github.event.inputs.build_android_so == 'true'
+    name: Android (arm64-v8a)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run build script
+      run: |
+        cd $GITHUB_WORKSPACE
+        npm i
+        bash ./android_armv8_so.sh ${{github.event.inputs.v8_revision}} ${{github.event.inputs.wrap_new}}
+        mv ~/v8/v8/output/v8 ~/v8/v8/output/v8_${{github.event.inputs.v8_revision}}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: v8_bin_android_arm_v8
+        path: ~/v8/v8/output/**/*
+
   build_android_arm_v8:
     if: github.event.inputs.build_android == 'true'
     name: Android (arm64-v8a)
