@@ -3,6 +3,9 @@
 VERSION=$1
 NEW_WRAP=$2
 
+echo ===== Test gnu
+strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBCXX
+
 [ -z "$GITHUB_WORKSPACE" ] && GITHUB_WORKSPACE="$( cd "$( dirname "$0" )"/.. && pwd )"
 
 if [ "$VERSION" == "10.6.194" -o "$VERSION" == "11.8.172" ]; then 
